@@ -35,39 +35,39 @@ function makeReport(path, explanation) {
 
 
 function ensureEqualValues(path, actual, expected) {
-  assert.strictEqual(
-    Object.prototype.toString.call(actual),
-    Object.prototype.toString.call(expected),
+  var actualKind   = Object.prototype.toString.call(actual),
+      expectedKind = Object.prototype.toString.call(expected);
+
+  assert.strictEqual(actualKind, expectedKind,
     makeReport(path, 'Objects must be of same type'));
 
-  if (Number.isNaN(actual) && Number.isNaN(expected)) {
+  if (actual === expected) {
     return;
-  }
 
-  if ('object' === typeof actual && 'object' === typeof expected) {
+  } else if (Number.isNaN(actual) && Number.isNaN(expected)) {
+    return;
+
+  } else {
     assert.strictEqual(
       Object.getPrototypeOf(actual),
       Object.getPrototypeOf(expected),
       makeReport(path, 'Objects has different prototypes'));
-
-    if (actual instanceof Array && expected instanceof Array) {
-
+    
+    if (actual instanceof Array &&
+        expected instanceof Array) {
       ensureEqualArrays(path, actual, expected);
 
-    } else if (actual instanceof RegExp && expected instanceof RegExp) {
-
-      ensureEqualRegexps(path, actual, expected);
-
-    } else if (actual instanceof Date && expected instanceof Date) {
-
+    } else if (actual instanceof Date &&
+               expected instanceof Date) {
       ensureEqualDates(path, actual, expected);
 
-    } else {
+    } else if (actual instanceof RegExp &&
+               expected instanceof RegExp) {
+      ensureEqualRegexps(path, actual, expected);
 
+    } else {
       ensureEqualObjects(path, actual, expected);
     }
-  } else {
-    assert.strictEqual(actual, expected);
   }
 }
 
@@ -132,9 +132,7 @@ function ensureEqualRegexps(path, actual, expected) {
 function ensureEqualObjects(path, actual, expected) {
   var actualKeys   = Object.keys(actual),
       expectedKeys = Object.keys(expected),
-      index,
-      length,
-      key;
+      index, length, key;
 
   assert.strictEqual(actualKeys.length, expectedKeys.length,
     makeReport(path, 'Objects has different numbers of own properies.'));

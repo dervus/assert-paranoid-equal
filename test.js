@@ -24,6 +24,10 @@ describe('assert-full-equal', function () {
     notFullEqual(null, NaN);
   });
 
+  it('should treat nulls', function () {
+    fullEqual(null, null);
+  });
+
   it('should treat numbers', function () {
     fullEqual(-346, -346);
     fullEqual(0, 0);
