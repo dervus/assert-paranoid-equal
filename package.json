@@ -1,0 +1,28 @@
+{
+  "name": "assert-full-equal",
+  "version": "0.0.1",
+  "description": "An addition to Node's assertion library provides a variant of the deepEqual function.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dervus/assert-full-equal.git"
+  },
+  "keywords": [
+    "assert"
+  ],
+  "author": {
+    "name": "Dervus Grim",
+    "email": "dervus@lavabit.com"
+  },
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "mocha": ">= 1.7.4"
+  },
+  "engines": {
+    "node": ">= 0.6.0"
+  }
+}
