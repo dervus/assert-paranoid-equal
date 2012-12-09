@@ -6,12 +6,12 @@
 
 
 var util = require('util');
-var library = require('./index');
+var subject = require('../lib/assert-full-equal');
 
 
-describe('assert-full-equal', function () {
-  var fullEqual    = library.fullEqual,
-      notFullEqual = library.notFullEqual;
+describe('Functional', function () {
+  var fullEqual    = subject.fullEqual,
+      notFullEqual = subject.notFullEqual;
 
   it('should throw when the objects are of different types', function () {
     notFullEqual(42, 'answer');
