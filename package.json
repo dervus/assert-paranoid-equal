@@ -1,8 +1,8 @@
 {
   "name": "assert-full-equal",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An addition to Node's assertion library provides a variant of the deepEqual function.",
-  "main": "index.js",
+  "main": "lib/assert-full-equal.js",
   "scripts": {
     "test": "mocha"
   },
@@ -23,6 +23,6 @@
     "mocha": ">= 1.7.4"
   },
   "engines": {
-    "node": ">= 0.6.0"
+      "node": ">= 0.6.0"
   }
 }
