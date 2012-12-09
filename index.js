@@ -157,14 +157,14 @@ function ensureEqualObjects(path, actual, expected) {
 function fullEqual(value1, value2) {
   assert.doesNotThrow(function () {
     ensureEqualValues([], value1, value2);
-  });
+  }, assert.AssertionError);
 }
 
 
 function notFullEqual(value1, value2) {
   assert.throws(function () {
     ensureEqualValues([], value1, value2);
-  });
+  }, assert.AssertionError);
 }
 
 
