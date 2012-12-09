@@ -7,7 +7,8 @@
 
 
 var assert = require('assert');
-var util = require('util');
+var nodeUtils = require('util');
+var ownUtils = require('./lib/assert-full-equal/utilities');
 
 
 function makeReport(path, explanation) {
@@ -30,44 +31,38 @@ function makeReport(path, explanation) {
     prefix += ': ';
   }
 
-  return prefix + util.format.apply(parameters);
+  return prefix + nodeUtils.format.apply(parameters);
 }
 
 
 function ensureEqualValues(path, actual, expected) {
-  var actualKind   = Object.prototype.toString.call(actual),
-      expectedKind = Object.prototype.toString.call(expected);
-
-  assert.strictEqual(actualKind, expectedKind,
+  assert.strictEqual(
+    typeof actual,
+    typeof expected,
     makeReport(path, 'Objects must be of same type'));
 
-  if (actual === expected) {
-    return;
 
-  } else if (Number.isNaN(actual) && Number.isNaN(expected)) {
-    return;
-
-  } else {
+  if (ownUtils.isObject(actual, expected)) {
     assert.strictEqual(
       Object.getPrototypeOf(actual),
       Object.getPrototypeOf(expected),
       makeReport(path, 'Objects has different prototypes'));
     
-    if (actual instanceof Array &&
-        expected instanceof Array) {
+    if (ownUtils.isInstanceOf(Array, actual, expected)) {
       ensureEqualArrays(path, actual, expected);
 
-    } else if (actual instanceof Date &&
-               expected instanceof Date) {
+    } else if (ownUtils.isInstanceOf(Date, actual, expected)) {
       ensureEqualDates(path, actual, expected);
 
-    } else if (actual instanceof RegExp &&
-               expected instanceof RegExp) {
+    } else if (ownUtils.isInstanceOf(RegExp, actual, expected)) {
       ensureEqualRegexps(path, actual, expected);
 
     } else {
       ensureEqualObjects(path, actual, expected);
     }
+
+  } else if (!(Number.isNaN(actual) && Number.isNaN(expected))) {
+    assert.strictEqual(actual, expected);
   }
 }
 
