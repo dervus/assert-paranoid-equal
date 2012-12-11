@@ -6,8 +6,20 @@ var subject = require('../lib/assert-full-equal/utilities');
 
 
 describe('Utilities', function () {
-  var isObject     = subject.isObject,
-      isInstanceOf = subject.isInstanceOf;
+  var isNothing    = subject.isNothing,
+      isObject     = subject.isObject,
+      isInstanceOf = subject.isInstanceOf,
+      collectKeys  = subject.collectKeys;
+
+  it('function isNothing(subject)', function () {
+    assert(isNothing(undefined));
+    assert(isNothing(null));
+    assert(!isNothing(42));
+    assert(!isNothing('hello world'));
+    assert(!isNothing(/^fo{1,5}/i));
+    assert(!isNothing([ 1, 2, 3 ]));
+    assert(!isNothing({ a: 42, b: 'show' }));
+  });
 
   it('function isObject(subjects...)', function () {
     assert(isObject({}));
@@ -30,5 +42,30 @@ describe('Utilities', function () {
     assert(!isInstanceOf(Array, [ 1, 2, 3 ], { greeting: 'hello' }));
     assert(!isInstanceOf(Array, new Date()));
     assert(!isInstanceOf(Date, new Array(42)));
+  });
+
+  it('function collectKeys(subject, include, exclude)', function () {
+    var sample = { a: 12, b: 'hello' };
+
+    function check(result, subject, include, exclude) {
+      var keys, index, length;
+
+      keys = collectKeys(subject, include, exclude);
+      assert.strictEqual(keys.length, result.length);
+
+      keys.sort();
+      result.sort();
+
+      for (index = 0, length = keys.length; index < length; index += 1) {
+        assert.strictEqual(keys[index], result[index]);
+      }
+    }
+
+    check([ 'a', 'b' ],      sample, [],      []);
+    check([ 'a', 'b', 'c' ], sample, [ 'c' ], []);
+    check([ 'a' ],           sample, [],      [ 'b' ]);
+    check([ 'a', 'c' ],      sample, [ 'c' ], [ 'b' ]);
+    check([ 'a', 'b' ],      sample, [ 'b' ], []);
+    check([ 'a', 'b' ],      sample, [],      [ 'c' ]);
   });
 });
