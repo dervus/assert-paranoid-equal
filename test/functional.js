@@ -66,6 +66,12 @@ describe('Functional', function () {
     notFullEqual(new Date(2005, 4, 10, 12, 33, 9, 781), new Date(2005, 4, 10, 12, 33, 9, 782));
   });
 
+  it('should treat buffers', function () {
+    fullEqual(new Buffer([ 1, 2, 3, 4 ]), new Buffer([ 1, 2, 3, 4 ]));
+    notFullEqual(new Buffer([ 1, 2, 3, 4 ]), new Buffer([ 1, 2, 3 ]));
+    notFullEqual(new Buffer([ 1, 2, 3, 4 ]), new Buffer([ 1, 2, 4, 3 ]));
+  });
+
   it('should treat flat arrays', function () {
     fullEqual([1, 2, 3, 4], [1, 2, 3, 4]);
     notFullEqual([2, 1, 4], [1, 2, 4]);
