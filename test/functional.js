@@ -1,9 +1,5 @@
 'use strict';
 
-//
-// TODO: Add regexp tests.
-//
-
 
 var util = require('util');
 var assert = require('assert');
