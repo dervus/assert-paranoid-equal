@@ -56,6 +56,13 @@ describe('Functional', function () {
     notFullEqual('john', 'joe');
   });
 
+  it('should treat regexps', function () {
+    fullEqual((/hello/i), (/hello/i));
+    fullEqual((/hello\s+[wv]orlds?/g), (/hello\s+[wv]orlds?/g));
+    notFullEqual((/hello/i), (/world/i));
+    notFullEqual((/rain/i), (/rain/ig));
+  });
+
   it('should treat flat arrays', function () {
     fullEqual([1, 2, 3, 4], [1, 2, 3, 4]);
     notFullEqual([2, 1, 4], [1, 2, 4]);
