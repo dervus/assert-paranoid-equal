@@ -63,6 +63,13 @@ describe('Functional', function () {
     notFullEqual((/rain/i), (/rain/ig));
   });
 
+  it('should treat dates', function () {
+    fullEqual(new Date(2012, 12, 21), new Date(1358722800000));
+    fullEqual(new Date('2001-12-14t21:59:43.10-05:00'), new Date(1008385183100));
+    notFullEqual(new Date(2005, 4, 25), new Date(2005, 2, 25));
+    notFullEqual(new Date(2005, 4, 10, 12, 33, 9, 781), new Date(2005, 4, 10, 12, 33, 9, 782));
+  });
+
   it('should treat flat arrays', function () {
     fullEqual([1, 2, 3, 4], [1, 2, 3, 4]);
     notFullEqual([2, 1, 4], [1, 2, 4]);
