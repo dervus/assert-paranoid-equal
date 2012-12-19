@@ -21,7 +21,7 @@ describe('Utilities', function () {
     assert(!isNothing({ a: 42, b: 'show' }));
   });
 
-  it('function isObject(subjects...)', function () {
+  it('function isObject(subject)', function () {
     assert(isObject({}));
     assert(isObject({ a: 10, b: 'hello' }));
     assert(isObject([ 1, 2, 'world' ]));
