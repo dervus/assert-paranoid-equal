@@ -21,6 +21,7 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
+    "jshint": ">= 0.9.1",
     "mocha": ">= 1.7.4"
   },
   "engines": {

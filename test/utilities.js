@@ -1,4 +1,5 @@
 'use strict';
+/*global suite:false, test:false */
 
 
 var assert = require('assert');
@@ -34,7 +35,7 @@ suite('Utilities', function () {
   });
 
   test('function isInstanceOf(constructor, subjects...)', function () {
-    assert(isInstanceOf(Object, new Object()));
+    assert(isInstanceOf(Object, {}));
     assert(isInstanceOf(Object, new Array(10)));
     assert(isInstanceOf(Array, [ 1, 2, 3 ]));
     assert(isInstanceOf(Array, [ 1, 2, 3 ], [ 'hello', 'world' ]));

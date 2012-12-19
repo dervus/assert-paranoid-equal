@@ -1,4 +1,5 @@
 'use strict';
+/*global suite:false, test:false */
 
 
 var util = require('util');
