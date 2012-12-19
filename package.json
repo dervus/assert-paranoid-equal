@@ -1,17 +1,18 @@
 {
-  "name": "assert-full-equal",
-  "version": "0.1.1",
-  "description": "An addition to Node's assertion library provides a variant of the deepEqual function.",
-  "main": "lib/assert-full-equal.js",
+  "name": "assert-paranoid-equal",
+  "version": "1.0.0",
+  "description": "An addition to Node's assertion library provides a paranoid variant of deepEqual.",
+  "main": "lib/assert-paranoid-equal.js",
   "scripts": {
     "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/dervus/assert-full-equal.git"
+    "url": "git://github.com/dervus/assert-paranoid-equal.git"
   },
   "keywords": [
-    "assert"
+    "assert",
+    "paranoid"
   ],
   "author": {
     "name": "Dervus Grim",

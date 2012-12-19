@@ -1,4 +1,4 @@
-assert-full-equal
+assert-paranoid-equal
 =================
 
-An addition to Node's assertion library provides a variant of the deepEqual function.
+An addition to Node's assertion library provides a paranoid variant of deepEqual.

@@ -2,7 +2,7 @@
 
 
 var assert = require('assert');
-var subject = require('../lib/assert-full-equal/utilities');
+var subject = require('../lib/assert-paranoid-equal/utilities');
 
 
 suite('Utilities', function () {
