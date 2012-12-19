@@ -5,13 +5,13 @@ var assert = require('assert');
 var subject = require('../lib/assert-full-equal/utilities');
 
 
-describe('Utilities', function () {
+suite('Utilities', function () {
   var isNothing    = subject.isNothing,
       isObject     = subject.isObject,
       isInstanceOf = subject.isInstanceOf,
       collectKeys  = subject.collectKeys;
 
-  it('function isNothing(subject)', function () {
+  test('function isNothing(subject)', function () {
     assert(isNothing(undefined));
     assert(isNothing(null));
     assert(!isNothing(42));
@@ -21,7 +21,7 @@ describe('Utilities', function () {
     assert(!isNothing({ a: 42, b: 'show' }));
   });
 
-  it('function isObject(subject)', function () {
+  test('function isObject(subject)', function () {
     assert(isObject({}));
     assert(isObject({ a: 10, b: 'hello' }));
     assert(isObject([ 1, 2, 'world' ]));
@@ -33,7 +33,7 @@ describe('Utilities', function () {
     assert(!isObject('John Show'));
   });
 
-  it('function isInstanceOf(constructor, subjects...)', function () {
+  test('function isInstanceOf(constructor, subjects...)', function () {
     assert(isInstanceOf(Object, new Object()));
     assert(isInstanceOf(Object, new Array(10)));
     assert(isInstanceOf(Array, [ 1, 2, 3 ]));
@@ -44,7 +44,7 @@ describe('Utilities', function () {
     assert(!isInstanceOf(Date, new Array(42)));
   });
 
-  it('function collectKeys(subject, include, exclude)', function () {
+  test('function collectKeys(subject, include, exclude)', function () {
     var sample = { a: 12, b: 'hello' };
 
     function check(result, subject, include, exclude) {
