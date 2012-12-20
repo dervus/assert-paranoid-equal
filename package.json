@@ -1,6 +1,6 @@
 {
   "name": "assert-paranoid-equal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An addition to Node's assertion library provides a paranoid variant of deepEqual.",
   "main": "lib/assert-paranoid-equal.js",
   "scripts": {
