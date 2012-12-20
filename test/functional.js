@@ -69,7 +69,7 @@ suite('Functional', function () {
 
   test('Date objects', function () {
     ok(new Date(2012, 12, 21), new Date(1358722800000));
-    ok(new Date('2001-12-14t21:59:43.10-05:00'), new Date(1008385183100));
+    ok(new Date('2001-12-14T21:59:43.10Z'), new Date(1008367183100));
     fail(new Date(2005, 4, 25), new Date(2005, 2, 25));
     fail(new Date(2005, 4, 10, 12, 33, 9, 781), new Date(2005, 4, 10, 12, 33, 9, 782));
   });
