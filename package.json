@@ -4,7 +4,7 @@
   "description": "An addition to Node's assertion library provides a paranoid variant of deepEqual.",
   "main": "lib/assert-paranoid-equal.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha -R spec"
   },
   "repository": {
     "type": "git",
