@@ -49,13 +49,13 @@ newly constructed Report object.
 
 Report objects contain the following properties:
 
- * `reason`     — Machine-friendly reason identifier. See the source
-                  code for details.
- * `expected`   — Expected top-level object.
- * `actual`     — Actual top-level object.
- * `context`    — Special Context object. It contains:
-   * `path`     — Position (array of keys) within the object where the
-                  discrepancy was detected.
+ * `reason` — Machine-friendly reason identifier. See the source code
+   for details.
+ * `expected` — Expected top-level object.
+ * `actual` — Actual top-level object.
+ * `context` — Special Context object. It contains:
+   * `path` — Position (array of keys) within the object where the
+     discrepancy was detected.
    * `expected` — Expected check value at the given path.
    * `actual`   — Actual check value at the given path.
 
