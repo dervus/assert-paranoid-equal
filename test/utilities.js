@@ -7,10 +7,11 @@ var subject = require('../lib/assert-paranoid-equal/utilities');
 
 
 suite('Utilities', function () {
-  var isNothing    = subject.isNothing,
-      isObject     = subject.isObject,
-      isInstanceOf = subject.isInstanceOf,
-      collectKeys  = subject.collectKeys;
+  var isNothing     = subject.isNothing,
+      isObject      = subject.isObject,
+      isNaNConstant = subject.isNaNConstant,
+      isInstanceOf  = subject.isInstanceOf,
+      collectKeys   = subject.collectKeys;
 
   test('function isNothing(subject)', function () {
     assert(isNothing(undefined));
@@ -32,6 +33,24 @@ suite('Utilities', function () {
     assert(!isObject(undefined));
     assert(!isObject(42));
     assert(!isObject('John Show'));
+  });
+
+  test('function isNaNConstant(subject)', function () {
+    assert(isNaNConstant(NaN));
+    assert(isNaNConstant(Number.NaN));
+    assert(isNaNConstant(0 / 0));
+     
+    assert(!isNaNConstant(undefined));
+    assert(!isNaNConstant({}));
+    assert(!isNaNConstant(true));
+    assert(!isNaNConstant(null));
+    assert(!isNaNConstant(37));
+    assert(!isNaNConstant('37'));
+    assert(!isNaNConstant('37.37'));
+    assert(!isNaNConstant(''));
+    assert(!isNaNConstant(' '));
+    assert(!isNaNConstant('NaN'));
+    assert(!isNaNConstant('blabla'));
   });
 
   test('function isInstanceOf(constructor, subjects...)', function () {

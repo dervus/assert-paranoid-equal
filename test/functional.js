@@ -10,15 +10,22 @@ var subject = require('../lib/assert-paranoid-equal');
 suite('Functional', function () {
 
   function ok(actual, expected) {
-    assert.doesNotThrow(function () {
-      subject.paranoidEqual(actual, expected);
-    }, assert.AssertionError);
+    subject.paranoidEqual(actual, expected);
   }
 
   function fail(actual, expected) {
-    assert.throws(function () {
+    try {
       subject.paranoidEqual(actual, expected);
-    }, assert.AssertionError);
+    } catch (exception) {
+      if (exception instanceof assert.AssertionError) {
+        return;
+      }
+    }
+
+    throw new Error(
+      util.inspect(actual) +
+      ' should not be paranoidly equal to ' +
+      util.inspect(expected));
   }
 
   test('Objects of different types are not equal', function () {
